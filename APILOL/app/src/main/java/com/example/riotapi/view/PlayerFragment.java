@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.riotapi.R;
 import com.example.riotapi.viewmodel.PlayerViewModel;
 import com.squareup.picasso.Picasso;
@@ -28,7 +29,7 @@ public class PlayerFragment extends Fragment {
     TextView name, level;
     ImageView imgIcon;
     ProgressBar progressBar;
-    public static final String BASE_URL_IMAGE = "http://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/";
+    public static final String BASE_URL_IMAGE = "https://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/";
     public PlayerFragment() {
         // Required empty public constructor
     }
@@ -52,12 +53,8 @@ public class PlayerFragment extends Fragment {
                     level.setText(String.valueOf(playerResponse.getSummonerLevel()));
 
                     String baseImage = BASE_URL_IMAGE + playerResponse.getProfileIconId() + ".png";
-                    Log.i("ICON-ID", baseImage);
-                    Picasso.get()
-                            .load(baseImage)
-                            .resize(50, 50)
-                            .error(R.drawable.riot)
-                            .into(imgIcon);
+                    Log.i("ICON-ID", "MESSAGE --> " + playerResponse.getProfileIconId());
+                    Picasso.get().load(baseImage).into(imgIcon);
                 });
             }
             viewModel.booleanLiveData.observe(this, aBoolean -> {
