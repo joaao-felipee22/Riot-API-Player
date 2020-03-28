@@ -13,6 +13,7 @@ public class ServiceRetrofit {
 
     private static final String BASE_URL = "https://br1.api.riotgames.com/lol/summoner/v4/";
     public static final String API_KEY= "RGAPI-41b50665-99ab-44f5-9a0b-f59b34647996";
+    public static final String BASE_URL_IMAGE = "https://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/";
     private static retrofit2.Retrofit retrofit;
 
     private static retrofit2.Retrofit getRetrofit() {
